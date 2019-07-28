@@ -6,5 +6,5 @@ import {Component} from '@angular/core';
   styleUrls: ['./start.css']
 })
 export class Start {
-  gameTitle = 'Awesomeness!';
+  gameTitle = 'Zotta Galaxy';
 }

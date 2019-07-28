@@ -1,0 +1,87 @@
+.open-inventory {
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  margin-top: calc(12.5vh - 30px);
+  cursor: pointer;
+}
+
+.dark-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+}
+
+.inventory-screen {
+  background-color: #d2b48c;
+  border: 2px solid darkgreen;
+  position: absolute;
+  height: 100%;
+  top: 10%;
+  left: 20%;
+  width: 60%;
+  z-index: 101;
+}
+
+.hero-tab {
+  border-right: 2px solid darkgreen;
+  border-bottom: 2px solid darkgreen;
+  cursor: pointer;
+}
+
+.hero-tab:last-child {
+  border-right: none;
+}
+
+.hero-tab.selected {
+  border-bottom: none;
+}
+
+.add-hero {
+  border-bottom: 2px solid darkgreen;
+  font-size: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.close-button {
+  font-size: 50px;
+  position: absolute;
+  z-index: 102;
+  top: -40px;
+  right: -20px;
+  cursor: pointer;
+  color: silver;
+}
+
+.improve-skill {
+  cursor: pointer;
+}
+
+.inventory-display {
+  border: 2px solid darkgreen;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 7px;
+  height: 350px;
+  overflow-y: auto;
+}
+
+.inventory-display .item {
+  border-bottom: 1px solid white;
+}
+
+.inventory-display .item:last-child {
+  border-bottom: none;
+}
+
+.inventory-display .equip-button {
+  cursor: pointer;
+}
+
+.available-heroes-screen {
+  overflow-y: auto;
+}

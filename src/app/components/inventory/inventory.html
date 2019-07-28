@@ -1,0 +1,103 @@
+<div class="inventory-component">
+  <button class="btn open-inventory" (click)="openInventory()">Inventory</button>
+  <div *ngIf="inventoryIsOpen">
+    <div class="dark-overlay" (click)="closeInventory()"></div>
+    <div class="inventory-screen">
+      <div class="container-fluid">
+        <div class="row">
+          <div (click)="closeInventory()" class="close-button">
+            <i class="fa fa-times"></i>
+          </div>
+          <div *ngFor="let hero of heroParty" class="col p-3 hero-tab" [class.selected]="selectedHero === hero" (click)="setSelectedHero(hero)">
+            <h2 class="text-center">
+              {{hero.name}}
+            </h2>
+          </div>
+          <div *ngIf="heroParty.length < 3 && availableHeroes.length && !isFighting" class="col-2 add-hero" (click)="showAvailableHeroes()">
+            <i class="fa fa-plus"></i>
+          </div>
+        </div>
+        <div *ngIf="showAvailableHeroScreen" class="row available-heroes-screen h-100">
+          <div class="col-4 p-3 text-center" *ngFor="let hero of availableHeroes">
+            <img [src]="hero.spriteUrl" [alt]="hero.name" class="img-fluid mb-3" />
+            <h5>{{hero.name}} - {{hero.characterRole}} - lvl {{hero.level}}</h5>
+            <div class="row">
+              <div class="col skill d-flex flex-column">
+                <h6>ATK</h6>
+                <p>{{hero.skills.attack}}</p>
+              </div>
+              <div class="col skill d-flex flex-column">
+                <h6>SNK</h6>
+                <p>{{hero.skills.sneak}}</p>
+              </div>
+              <div class="col skill d-flex flex-column">
+                <h6>PRES</h6>
+                <p>{{hero.skills.persuade}}</p>
+              </div>
+              <div class="col skill d-flex flex-column">
+                <h6>INT</h6>
+                <p>{{hero.skills.intelligence}}</p>
+              </div>
+            </div>
+            <button class="btn" (click)="addHeroToParty(hero)">Add To Party</button>
+          </div>
+        </div>
+        <div *ngIf="!showAvailableHeroScreen" class="row">
+          <div class="col-4 p-3 text-center">
+            <img [src]="selectedHero.spriteUrl" [alt]="selectedHero.name" class="img-fluid mb-3" />
+            <h5>{{selectedHero.name}} - {{selectedHero.characterRole}} - lvl {{selectedHero.level}}</h5>
+            <div class="row">
+              <div class="col skill d-flex flex-column">
+                <h6>ATK</h6>
+                <p>{{selectedHero.skills.attack}}</p>
+                <p *ngIf="selectedHero.availableSkillPoints" class="improve-skill" (click)="improveSkill(_characterSkills.attack)"><i class="fa fa-plus"></i></p>
+              </div>
+              <div class="col skill d-flex flex-column">
+                <h6>SNK</h6>
+                <p>{{selectedHero.skills.sneak}}</p>
+                <p *ngIf="selectedHero.availableSkillPoints" class="improve-skill" (click)="improveSkill(_characterSkills.sneak)"><i class="fa fa-plus"></i></p>
+              </div>
+              <div class="col skill d-flex flex-column">
+                <h6>PERS</h6>
+                <p>{{selectedHero.skills.persuade}}</p>
+                <p *ngIf="selectedHero.availableSkillPoints" class="improve-skill" (click)="improveSkill(_characterSkills.persuade)"><i class="fa fa-plus"></i></p>
+              </div>
+              <div class="col skill d-flex flex-column">
+                <h6>INT</h6>
+                <p>{{selectedHero.skills.intelligence}}</p>
+                <p *ngIf="selectedHero.availableSkillPoints" class="improve-skill" (click)="improveSkill(_characterSkills.intelligence)"><i class="fa fa-plus"></i></p>
+              </div>
+            </div>
+            <h6 *ngIf="selectedHero.availableSkillPoints">Available Skill Points: {{selectedHero.availableSkillPoints}}</h6>
+            <h6 *ngIf="!selectedHero.availableSkillPoints">Experience: {{selectedHero.experience}}/{{_experienceToLevel[selectedHero.level]}}</h6>
+          </div>
+          <div class="col-4 p-3 text-center d-flex flex-column">
+            <h3 class="mb-5">Equipped Items</h3>
+            <h6>Weapon:</h6>
+            <p class="mb-5">{{selectedHero.equippedWeapon.name}} -- Min Damage: {{selectedHero.equippedWeapon.minDamage}}, Max Damage: {{selectedHero.equippedWeapon.maxDamage}}</p>
+            <h6>Armor:</h6>
+            <p class="mb-5">{{selectedHero.equippedArmor.name}} -- Armor Bonus: {{selectedHero.equippedArmor.attackBarrierBonus}}</p>
+            <h3 class="mb-3">Remove Hero From Party</h3>
+            <p *ngIf="selectedHero === mainCharacter">
+              You cannot remove the main character from the party.
+            </p>
+            <button *ngIf="selectedHero !== mainCharacter" class="btn btn-danger remove-character" (click)="removeCharacterFromParty()">Remove</button>
+          </div>
+          <div class="col-4 p-3 text-center d-flex flex-column">
+            <h3>Party Inventory</h3>
+            <div class="inventory-display">
+              <div *ngFor="let item of inventory" class="item p-3">
+                <h6 class="text-left mb-3">
+                  {{item.name}}
+                  <span *ngIf="item.minDamage"> -- Weapon -- Min Damage: {{item.minDamage}}, Max Damage: {{item.maxDamage}}</span>
+                  <span *ngIf="item.attackBarrierBonus"> -- Armor -- Armor Bonus: {{item.attackBarrierBonus}}</span>
+                </h6>
+                <button *ngIf="!isFighting" class="btn equip-button" (click)="equipItem(item)">Equip</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

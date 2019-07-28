@@ -5,7 +5,7 @@ import {GenderOptions, RaceOptions} from '../models/character-options';
 export const Chapter1: Chapter = {
 
   story: [
-    'You enter the woods, chasing after the goblin who stole your fathers sword. You lose sight of them in the thick woods and begin to creep forward, ' +
+    'You enter the galaxy, chasing after the goblin who stole your fathers sword. You lose sight of them in the thick woods and begin to creep forward, ' +
     'relying on your ears to warm you of danger and hopefully to locate the thieving goblin.',
     'Shenanigans ensue and an encounter begins. Now the question is: How do you want to handle it?'
   ],

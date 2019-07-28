@@ -19,7 +19,7 @@ export class GameControllerService {
 
   heroParty: Hero[] = [];
   partyInventory: (Weapon | Armor)[] = [];
-  availableHeros: Hero[] = [];
+  availableHeroes: Hero[] = [];
   enemyParty: Monster[] = this.currentChapter.enemyParty;
 
   setMainCharacter(character) {
@@ -95,7 +95,7 @@ export class GameControllerService {
             this.heroParty.push(newHero);
           } else {
             messages.push(`A new hero is available to join your party! ${newHero.name} - ${newHero.characterRole} - lvl ${newHero.level}`);
-            this.availableHeros.push(newHero);
+            this.availableHeroes.push(newHero);
           }
           break;
       }
@@ -114,7 +114,7 @@ export class GameControllerService {
     this.currentChapter = Chapter1;
     this.heroParty = [];
     this.partyInventory = [];
-    this.availableHeros = [];
+    this.availableHeroes = [];
     this.enemyParty = this.currentChapter.enemyParty;
 
     this.router.navigateByUrl('/');
