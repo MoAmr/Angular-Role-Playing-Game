@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="row h-100">
+    <div class="col-3 sidebar p-3 text-center">
+      <h1>Races</h1>
+      <ul>
+        <li *ngFor="let race of races" (click)="changeRace(race)" [class.active]="character.race === race"
+            class="mb-3 py-2">
+          {{race}}
+        </li>
+      </ul>
+    </div>
+    <div class="col-6 text-center text-white p-3">
+      <h2>Race</h2>
+      <p>{{character.race}}</p>
+      <h2>Class</h2>
+      <p>{{character.class}}</p>
+      <h2>Gender</h2>
+      <div class="d-flex justify-content-center">
+        <div class="gender-button mr-1" [class.active]="character.gender === 'Male'" (click)="changeGender('Male')">
+          <i class="fas fa-mars"></i>
+        </div>
+        <div class="gender-button ml-1" [class.active]="character.gender === 'Female'" (click)="changeGender('Female')">
+          <i class="fas fa-venus"></i>
+        </div>
+      </div>
+      <h2>Name</h2>
+      <input type="text" placeholder="Name" class="mb-5 px-2" [(ngModel)]="character.name" (input)="changeName()"/>
+      <button class="btn continue-button px-5 py-2 mx-auto" [class.disabled]="!characterComplete"
+              (click)="createCharacter()">Create Character
+      </button>
+    </div>
+    <div class="col-3 sidebar p-3 text-center">
+      <h1>Classes</h1>
+      <ul>
+        <li *ngFor="let class of classes" (click)="changeClass(class)" [class.active]="character.class === class"
+            class="mb-3 py-2">
+          {{class}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

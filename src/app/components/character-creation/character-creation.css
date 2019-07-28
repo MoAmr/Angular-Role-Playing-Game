@@ -1,0 +1,54 @@
+.container-fluid {
+    background: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: bisque;
+}
+
+  .sidebar ul {
+      list-style: none;
+      text-indent: 0;
+      padding: 0;
+  }
+
+  .sidebar li {
+      cursor: pointer;
+      display: block;
+      background-color: black;
+      color: white;
+      border-radius: 7px;
+  }
+
+  .sidebar li.active {
+      background: rgb(0, 0, 150);
+  }
+
+.gender-button {
+    cursor: pointer;
+    display: block;
+    background-color: white;
+    color: black;
+    border-radius: 7px;
+    width: 50px;
+    font-size: 30px;
+}
+
+  .gender-button.active {
+    background: rgb(0, 0, 150);
+  }
+
+.continue-button {
+    display: block;
+    cursor: pointer;
+    color: white;
+    background: rgb(0, 0, 150);
+    border: none;
+    border-radius: 7px;
+}
+
+  .continue-button.disabled {
+      background: black;
+      cursor: auto;
+  }
